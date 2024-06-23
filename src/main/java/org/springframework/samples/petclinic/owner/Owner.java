@@ -54,6 +54,10 @@ public class Owner extends Person {
 	@NotBlank
 	private String city;
 
+	@Column(name = "country")
+	@NotBlank
+	private String country;
+
 	@Column(name = "telephone")
 	@NotBlank
 	@Digits(fraction = 0, integer = 10)
@@ -78,6 +82,14 @@ public class Owner extends Person {
 
 	public void setCity(String city) {
 		this.city = city;
+	}
+
+	public String getCountry() {
+		return this.country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country.toUpperCase();
 	}
 
 	public String getTelephone() {
