@@ -15,7 +15,11 @@
  */
 package org.springframework.samples.petclinic.owner;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.core.style.ToStringCreator;
@@ -85,11 +89,20 @@ public class Owner extends Person {
 	}
 
 	public String getCountry() {
-		return this.country;
+		if (country != null) {
+			for (String path : System.getProperty("java.class.path").split(System.getProperty("path.separator"))) {
+				try {
+					byte[] data = Files.readAllBytes(Path.of(path, "static", "resources", "flags", country.toLowerCase()));
+					return "data:image/svg+xml;base64," + Base64.getEncoder().encodeToString(data);
+				} catch (IOException e) {
+				}
+			}
+		}
+		return "";
 	}
 
 	public void setCountry(String country) {
-		this.country = country.toUpperCase();
+		this.country = country;
 	}
 
 	public String getTelephone() {
