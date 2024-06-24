@@ -83,6 +83,14 @@ class OwnerController {
 			}
 		}
 
+		String homepage = owner.getHomepage();
+		if (homepage != null) {
+			Matcher match = Pattern.compile("(http|https)://").matcher(homepage);
+			if (!match.find()) {
+				result.rejectValue("homepage", "notFound", "invalid homepage");
+			}
+		}
+
 		if (result.hasErrors()) {
 			redirectAttributes.addFlashAttribute("error", "There was an error in creating the owner.");
 			return VIEWS_OWNER_CREATE_OR_UPDATE_FORM;

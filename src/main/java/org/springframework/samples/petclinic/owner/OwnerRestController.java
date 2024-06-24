@@ -42,6 +42,14 @@ public class OwnerRestController {
 			}
 		}
 
+		String homepage = owner.getHomepage();
+		if (homepage != null) {
+			Matcher match = Pattern.compile("(http|https)://").matcher(homepage);
+			if (!match.find()) {
+				result.rejectValue("homepage", "notFound", "invalid homepage");
+			}
+		}
+
 		if (result.hasErrors()) {
 				return null;
 		}
