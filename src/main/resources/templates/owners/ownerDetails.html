@@ -44,6 +44,10 @@
         <th>Homepage</th>
         <td th:text="*{homepage}"></td>
       </tr>
+      <tr>
+        <th>Notes</th>
+        <td th:text="*{notes}"></td>
+      </tr>
     </table>
   
     <a th:href="@{__${owner.id}__/edit}" class="btn btn-primary">Edit

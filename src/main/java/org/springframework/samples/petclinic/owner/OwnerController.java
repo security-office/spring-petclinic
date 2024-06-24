@@ -84,7 +84,7 @@ class OwnerController {
 		}
 
 		String homepage = owner.getHomepage();
-		if (homepage != null) {
+		if (homepage != null && !homepage.isEmpty()) {
 			Matcher match = Pattern.compile("(http|https)://").matcher(homepage);
 			if (!match.find()) {
 				result.rejectValue("homepage", "notFound", "invalid homepage");

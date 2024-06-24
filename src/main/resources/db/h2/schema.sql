@@ -41,7 +41,8 @@ CREATE TABLE owners (
   city       VARCHAR(80),
   country    VARCHAR(80),
   homepage   VARCHAR(512),
-  telephone  VARCHAR(20)
+  telephone  VARCHAR(20),
+  notes      VARCHAR(4096)
 );
 CREATE INDEX owners_last_name ON owners (last_name);
 

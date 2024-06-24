@@ -70,6 +70,9 @@ public class Owner extends Person {
 	@Column(name = "homepage")
 	private String homepage;
 
+	@Column(name = "notes")
+	private String notes;
+
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "owner_id")
 	@OrderBy("name")
@@ -122,6 +125,14 @@ public class Owner extends Person {
 
 	public void setHomepage(String homepage) {
 		this.homepage = homepage;
+	}
+
+	public String getNotes() {
+		return this.notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
 	}
 
 	public List<Pet> getPets() {
